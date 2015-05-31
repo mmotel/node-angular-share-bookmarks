@@ -11,7 +11,7 @@ var passport = require('passport');
 var Socket = require('./server/socket.js');
 
 //mongodb driver wrapper
-var MONGO_URL = 'mongodb://localhost:27017/testdb';
+var MONGO_URL = 'mongodb://localhost:27017/mgrappdb';
 var MONGO_OPLOG_URL =
   'mongodb://oplogger:superhaslo123@localhost:27017/local?authSource=admin';
 
@@ -25,7 +25,8 @@ require('./server/passport.js')( passport, Manager );
 
 var app = express();
 
-app.set('port', process.env.PORT || 3000);
+// app.set('port', process.env.PORT || 3000);
+app.set('port', 3001);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());

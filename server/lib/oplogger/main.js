@@ -22,8 +22,8 @@ module.exports = (function () {
         if(array[i] === object) {
           return true;
         }
-        return false;
       }
+      return false;
     };
 
     //Insert handler

@@ -13,6 +13,7 @@ module.exports = (function () {
   //    }
   // }
   var Queries = {
+    'users': [],
     'category': []
   };
 
@@ -22,6 +23,9 @@ module.exports = (function () {
     var id = client.id.toString();
     if(! Clients[id]){
       Clients[id] = client;
+    }
+    if(!Queries[coll]){
+      Queries[coll] = []
     }
     var qcoll = Queries[coll];
     var entry = _.find(qcoll, function (e) { return _.isEqual(e.query, query); });
@@ -52,9 +56,11 @@ module.exports = (function () {
   var rmAllSubs = function (client) {
     _.forOwn(Queries, function (query, id) {
       _.forEach(query, function (entry) {
-        _.remove(entry.clients, function (c) { return _.isEqual(c.client.id, client.id); });
-        if(entry.clients.length === 0){
-          _.remove(query, function (e) { return _.isEqual(e.query, entry.query); });
+        if(entry.clients){
+          _.remove(entry.clients, function (c) { return _.isEqual(c.client.id, client.id); });
+          if(entry.clients.length === 0){
+            _.remove(query, function (e) { return _.isEqual(e.query, entry.query); });
+          }
         }
       });
     });

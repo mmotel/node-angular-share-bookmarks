@@ -11,7 +11,7 @@ module.exports = function (server, MongoUrl, MongoOplogUrl, io) {
   var Subscription = require('./lib/oplogger/subscription.js')();
 
   var Oplog = Oplogger.tail(MongoUrl, MongoOplogUrl,
-              {'db': 'testdb', 'colls': [ 'category' ]});
+              {'db': 'mgrappdb', 'colls': [ 'users', 'category' ]});
 
   //oplogger callbacks
   Oplog.onInsert(function (item) {

@@ -4,10 +4,11 @@ var appServices = angular.module('appOplogServices', []);
 
 appServices.
 factory('Oplog',
-  [ '$rootScope', 'socket', 'OplogManager',
-  function( $rootScope, socket, OplogManager ) {
+  [ '$rootScope', '$q', 'socket', 'OplogManager',
+  function( $rootScope, $q, socket, OplogManager ) {
     'use strict';
     var queries = {};
+    var dfds = {};
 
     socket.on('sub', function ( args ) {
       if( !queries[ args.coll ] ) {
@@ -17,6 +18,10 @@ factory('Oplog',
       console.log( queries[ args.coll ] );
 
       $rootScope[ args.name ] = args.data;
+      console.log(args.name);
+      if(dfds[args.name]){
+        dfds[args.name].resolve();
+      }
       console.log( $rootScope[ args.name ] );
 
 
@@ -39,18 +44,34 @@ factory('Oplog',
 
     return {
       'subscribe': function (coll, query, name) {
-        if(name){
-          $rootScope[ name ] = [];
-        }
-        else{
-          $rootScope[ coll ] = [];
+        var Name = name || coll;
+        console.log(Name);
+        dfds[Name] = $q.defer();
+        delete $rootScope[ Name ];
+        var oldQuery;
+        if(queries[coll]){
+          for(var i = 0; i < queries[coll].length; i++){
+            console.log(queries[coll][i]);
+            if(queries[coll][i].name === Name){
+              oldQuery = queries[coll][i].query;
+              queries[coll].splice(i,1);
+              break;
+            }
+          }
         }
 
-        socket.emit('sub', {
+        if(!oldQuery){
+          oldQuery = query;
+        }
+        $rootScope[ Name ] = [];
+
+        socket.emit('alterSub', {
           'coll': coll,
-          'query': query,
-          'name': name || coll
+          'name': Name,
+          'oldQuery': oldQuery,
+          'newQuery': query
         });
+        return dfds[Name].promise;
       },
       'unsubscribe': function (coll, name) {
         var query;
@@ -76,6 +97,7 @@ factory('Oplog',
         var oldQuery;
         var Name = name || coll;
         if(! queries[coll]){ return; }
+        dfds[Name] = $q.defer();
         for(var i = 0; i < queries[coll].length; i++){
           console.log(queries[coll][i]);
           if(queries[coll][i].name === name){
@@ -93,6 +115,7 @@ factory('Oplog',
           'oldQuery': oldQuery,
           'newQuery': query
         });
+        return dfds[Name].promise;
       }
     };
 }]).
