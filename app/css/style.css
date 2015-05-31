@@ -1,0 +1,281 @@
+/*@import url("http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic");*/
+@import url("../fonts/SourceSansPro.css");
+* {
+  font-family: 'Source Sans Pro';
+}
+
+body {
+  background-color: #252122;
+  padding-bottom: 40px;
+  font-size: 17px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: #252122;
+	font-weight: 700;
+}
+
+.btn-vlg {
+  padding: 15px 25px;
+}
+
+.form-control:focus {
+  border-color: #e53359;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #e53359;
+          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #e53359;
+}
+
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
+  color: #fff;
+  background-color: #d52349;
+}
+
+.table > tbody > tr > td {
+  vertical-align: middle;
+}
+
+/* Helpers */
+
+.pink {
+  color: #d52349;
+}
+
+.dark {
+  color: #252122;
+}
+
+.btn-pink {
+  background: #d52349;
+  border-color: #d52349;
+  color: #fff;
+}
+
+.btn-pink:hover,
+.btn-pink:focus,
+.btn-pink:active {
+  background: #e53359;
+  border-color: #e53359;
+  color: #fff;
+}
+
+.btn-dark {
+  background: #252122;
+  border-color: #252122;
+  color: #fff;
+}
+
+.btn-dark:hover,
+.btn-dark:focus,
+.btn-dark:active {
+  background: #353132;
+  border-color: #353132;
+  color: #fff;
+}
+
+/* Header */
+
+#header-wrapper {
+  background-color: #fff;
+  padding: 40px 0px 50px 0px;
+  border-bottom: 1px solid #ccc;
+}
+
+#header > h1,
+#header > h1 > span {
+  text-align: center;
+  font-size: 43.3333358764648px;
+  font-stretch: normal;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 900;
+}
+
+/* Nav */
+
+nav {
+  margin-top: 20px;
+}
+
+nav > ul {
+  display: table;
+  margin: 0 auto 0 auto;
+
+}
+
+nav > ul > li {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+nav > ul > li > a,
+nav > ul > li > a:hover {
+  font-style: italic;
+  color: #5d5d5d;
+}
+
+/* Main */
+
+#main-wrapper {
+  background-color: #f7f7f7;
+  margin-bottom: 20px;
+  padding: 40px 0px 40px 0px;
+}
+
+#main {
+  background-color: #fff;
+  margin-bottom: 20px;
+  padding: 30px 30px 40px 30px;
+  border-bottom: 1px solid #ccc;
+
+}
+
+/* Forms */
+
+.form-group label {
+  /*font-size: 17px;*/
+  font-style: normal;
+  font-weight: normal;
+  color: #5d5d5d;
+}
+
+/* Footer */
+
+#footer-wrapper {
+  padding: 30px 0px;
+}
+
+#footer-body {
+  display: table;
+  padding: 20px 20px 10px 20px;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.0470588);
+  border-radius: 5px;
+  color: #858484;
+}
+
+#footer-body a,
+#footer-body a:hover,
+#footer-body a:focus,
+#footer-body a:active,
+#footer-body a:visited {
+  color: #858484;
+}
+
+/* Banner */
+
+#banner-wrapper {
+  background: #CCE8F4 url('../img/pic01.jpg');
+  background-position: center center;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  text-align: center;
+  padding: 100px 0px;
+}
+
+#banner {
+  background-color: #252122;
+  background-color: rgba(34,30,31,0.98);
+  display: table;
+  margin: 0 auto;
+  padding: 30px 60px 50px 60px;
+  border-radius: 5px;
+}
+
+#banner h1
+{
+  color: #fff;
+  font-weight: 700;
+}
+
+#banner p
+{
+  color: #d52349;
+  padding: 0;
+  font-style: normal;
+  margin: 0;
+  font-size: 24px;
+}
+
+/* Intro */
+
+#intro-wrapper {
+  background: #fff;
+  padding: 50px 0px;
+}
+
+#intro section {
+  padding: 30px 10px;
+  text-align: center;
+}
+
+#intro-actions {
+  display: table;
+  margin: 30px auto 0 auto;
+}
+
+#intro-actions .btn {
+  width: 30ex;
+}
+
+#intro .middle {
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+.icon.featured .glyphicon {
+  font-size: 4.5em;
+  color: #fff;
+}
+
+.icon.featured.center {
+  padding-left: 0.3em;
+}
+
+.icon.featured
+{
+  position: relative;
+  display: inline-block;
+  background-color: #d52349;
+  width: 9em;
+  padding: 1.75em 0 0.75em 0;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin: 0 0 2.5em 0;
+  cursor: default;
+}
+
+.icon.featured:before
+{
+  font-size: 4.5em;
+  line-height: 1em;
+  color: #fff;
+}
+
+.icon.featured:after
+{
+  content: '';
+  position: absolute;
+  bottom: -2em;
+  left: 0;
+  border-top: solid 2em #d52349;
+  border-left: solid 4.5em transparent;
+  border-right: solid 4.5em transparent;
+}
+
+.icon.featured.alt
+{
+  background-color: #252122;
+}
+
+.icon.featured.alt:after
+{
+  border-top-color: #252122;
+}

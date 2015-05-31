@@ -20,6 +20,10 @@ App.config(['$routeProvider',
         templateUrl: 'partials/signup.html',
         controller: 'signupCtrl'
       }).
+      when('/:username', {
+        templateUrl: 'partials/categories/showCategories.html',
+        controller: 'showCategoriesCtrl'
+      }).
       otherwise({
         redirectTo: '/index'
       });

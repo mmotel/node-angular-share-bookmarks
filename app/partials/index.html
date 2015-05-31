@@ -1,40 +1,51 @@
-<div class="row">
-  <div class="col-md-12">
-    <h2>Index</h2>
-    <hr/>
+<!-- Banner -->
+<div id="banner-wrapper">
+  <div id="banner">
+    <h1>Howdy. This is Share Bookmarks.</h1>
+    <p>Add bookmarks. Share with friends. Follow favourite categories.</p>
+  </div>
+</div>
 
-    <button class="btn btn-default" ng-click="rmSub()">remmove subscription</button>
 
-    <form name="signupForm" novalidate ng-submit="alterSub(query)">
-      <div class="form-group {{ ( signupForm.signupLogin.$invalid ? 'has-error' : '' ) }}">
-        <label for="exampleInputEmail1">Query for name:</label>
-        <input type="text" class="form-control" id="query" name="query" placeholder="Query"
-          ng-model="query">
+<!-- Intro -->
+<div id="intro-wrapper">
+  <div id="intro" class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <section>
+          <div class="icon featured">
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+          </div>
+          <h2>Create Account</h2>
+          <p>Description</p>
+        </section>
       </div>
-      <button type="submit" class="btn btn-default">Alter subscription</button>
-    </form>
+      <div class="col-md-4">
+        <section class="middle">
+          <div class="icon featured alt center">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+          </div>
+          <h2>Add Bookmarks</h2>
+          <p>Description</p>
+        </section>
+      </div>
+      <div class="col-md-4">
+        <section>
+          <div class="icon featured center">
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+          </div>
+          <h2>Follow categories</h2>
+          <p>Description</p>
+        </section>
+      </div>
+    </div>
 
-    <table class="table table-striped table-hover">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Wartość</th>
-          <th>Tablica</th>
-        </tr>
-      </thead>
-
-      <tr ng-repeat="cat in Category | orderBy:orderProp">
-        <td>
-          {{ cat.name }}
-        </td>
-        <td>
-          {{ cat.value }}
-        </td>
-        <td>
-          {{ cat.items }}
-        </td>
-      </tr>
-    </table>
-
+    <div class="row">
+      <ul id="intro-actions" class="list-inline">
+        <li><a href="#/register" class="btn btn-pink btn-lg btn-vlg">Create Account</a></li>
+        <li>or</li>
+        <li><a href="#/login" class="btn btn-dark btn-lg btn-vlg">Login</a></li>
+      </ul>
+    </div>
   </div>
 </div>

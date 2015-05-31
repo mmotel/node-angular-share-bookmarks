@@ -63,4 +63,22 @@ controller('signupCtrl',
     $scope.signup = function ( account ) {
     };
 
+}]).
+controller('showCategoriesCtrl',
+  ['$scope', '$location', '$routeParams', 'Oplog',
+  function( $scope, $location, $routeParams, Oplog ) {
+    console.log($routeParams.username);
+    'use strict';
+    $scope.user = {
+      username: 'mmotel'
+    };
+
+    $scope.categories = [
+      { '_id': 1, 'name': 'Category 1', 'description': 'Test category 1' },
+      { '_id': 2, 'name': 'Category 2', 'description': 'Test category 2' },
+      { '_id': 3, 'name': 'Category 3', 'description': 'Test category 3' },
+      { '_id': 4, 'name': 'Category 4', 'description': 'Test category 4' },
+      { '_id': 5, 'name': 'Category 5', 'description': 'Test category 5' }
+    ];
+
 }]);
