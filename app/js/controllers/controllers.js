@@ -93,12 +93,43 @@ controller('showCategoriesCtrl',
 
       }
     });
-      // $scope.categories = [
-      //   { '_id': 1, 'name': 'Category 1', 'description': 'Test category 1' },
-      //   { '_id': 2, 'name': 'Category 2', 'description': 'Test category 2' },
-      //   { '_id': 3, 'name': 'Category 3', 'description': 'Test category 3' },
-      //   { '_id': 4, 'name': 'Category 4', 'description': 'Test category 4' },
-      //   { '_id': 5, 'name': 'Category 5', 'description': 'Test category 5' }
-      // ];
+}]).
+controller('showBookmarksCtrl',
+  ['$rootScope', '$scope', '$location', '$routeParams', 'Oplog',
+  function($rootScope, $scope, $location, $routeParams, Oplog ) {
+    'use strict';
 
+    $scope.User = {
+      username: ''
+    };
+
+    $rootScope.Category = [];
+
+    var username = $routeParams.username;
+    var categoryID = $routeParams.categoryID;
+    console.log(username);
+    console.log(categoryID);
+
+    Oplog.subscribe('users', {'username': username}, 'Users').then(function () {
+      //onSuccess
+      // console.log($scope.Users);
+      if($scope.Users.length > 0){
+        $scope.User = $scope.Users[0];
+
+        Oplog.subscribe('category',
+          {'owner': $scope.User._id, '_id': categoryID}, 'Category').
+            then(function () {
+              console.log($rootScope.Category);
+              if($rootScope.Category.length > 0){
+                $scope.Cat = $rootScope.Category[0];
+                Oplog.subscribe('bookmark',
+                  {'owner': $scope.User._id, 'category': $scope.Cat._id},
+                    'Bookmark').then(function () {
+                      console.log($rootScope.Bookmark);
+                    });
+              }
+            });
+
+      }
+    });
 }]);

@@ -20,6 +20,10 @@ App.config(['$routeProvider',
         templateUrl: 'partials/signup.html',
         controller: 'signupCtrl'
       }).
+      when('/:username/:categoryID', {
+        templateUrl: 'partials/bookmarks/showBookmarks.html',
+        controller: 'showBookmarksCtrl'
+      }).
       when('/:username', {
         templateUrl: 'partials/categories/showCategories.html',
         controller: 'showCategoriesCtrl'

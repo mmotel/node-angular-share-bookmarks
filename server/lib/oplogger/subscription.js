@@ -14,7 +14,8 @@ module.exports = (function () {
   // }
   var Queries = {
     'users': [],
-    'category': []
+    'category': [],
+    'bookmark': []
   };
 
   var Clients = {};

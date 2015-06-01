@@ -15,14 +15,14 @@ factory('Oplog',
         queries[ args.coll ] = [];
       }
       queries[ args.coll ].push( {'name': args.name, 'query': args.query} );
-      console.log( queries[ args.coll ] );
+      // console.log( queries[ args.coll ] );
 
       $rootScope[ args.name ] = args.data;
-      console.log(args.name);
+      // console.log(args.name);
       if(dfds[args.name]){
         dfds[args.name].resolve();
       }
-      console.log( $rootScope[ args.name ] );
+      // console.log( $rootScope[ args.name ] );
 
 
     });
@@ -45,13 +45,13 @@ factory('Oplog',
     return {
       'subscribe': function (coll, query, name) {
         var Name = name || coll;
-        console.log(Name);
+        // console.log(Name);
         dfds[Name] = $q.defer();
         delete $rootScope[ Name ];
         var oldQuery;
         if(queries[coll]){
           for(var i = 0; i < queries[coll].length; i++){
-            console.log(queries[coll][i]);
+            // console.log(queries[coll][i]);
             if(queries[coll][i].name === Name){
               oldQuery = queries[coll][i].query;
               queries[coll].splice(i,1);
